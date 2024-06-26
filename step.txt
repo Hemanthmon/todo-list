@@ -1,0 +1,5 @@
+Todo App
+-setup express server
+- mongo db connection
+
+-set the veiw engine of express to EJS
