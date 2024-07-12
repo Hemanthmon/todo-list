@@ -128,19 +128,21 @@
     <div class="container">
         <h1>To-Do List</h1>
         <div>
-            <form action="/create-item" method="post">
-            <input type="text" id="create_field" name="todo" autofocus autocomplete="off" placeholder="Add a new task..." method="POST">
-            <button class="add_item" type="submit">Add New</button>
+            <form id="create_form" action="/create-item" method="post">
+                <input id="create_field" name="todo" autofocus autocomplete="off" placeholder="Add a new task..." method="POST">
+                <button class="add_item" type="button">I got This</button>
             </form>
         </div>
         
         <ul id="item_list" class="list-group">
         </ul>
     
+        <button class="show_more button-container">Show More</button>
+
         <form action="/logout" method="POST"> 
-        <div class="button-container">
-            <button id="logout">Logout</button>
-        </div>
+            <div class="button-container">
+                <button id="logout">Logout</button>
+            </div>
         </form>
     </div>
     
