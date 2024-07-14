@@ -98,7 +98,7 @@ app.post('/register-user', async (req, res) => {
         sendVerificationMail(email, token)
 
 
-        return res.redirect("successfullregestration.ejs");
+        return res.render("successfullregestration.ejs");
     } catch (error) {
         console.log("Error in register-user:", error);
         return res.status(500).json({
@@ -174,7 +174,7 @@ app.post('/login-user', async (req, res) => {
             username: userDb.username,
             email: userDb.email,
         };
-        return res.redirect("/dashboard.ejs");
+        return res.redirect("dashboard.ejs");
     } catch (error) {
         console.log("Error in login-user:", error);
         return res.status(500).json({
