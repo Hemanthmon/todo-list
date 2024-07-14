@@ -112,21 +112,15 @@ app.get('/verifytoken/:token', async (req, res) => {
     const token = req.params.token;
 
     // Verify the token
-    let email;
     try {
-        email = jwt.verify(token, process.env.SECRET_KEY).email; // Use .email to extract the email from the payload
-    } catch (error) {
-        console.error("Token verification error:", error);
-        return res.status(400).json({ error: "Invalid or expired token" });
-    }
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const email = decoded.email;
 
-    try {
-        // Update the user to set email as verified
         await userModel.findOneAndUpdate({ email }, { isEmailVerified: true });
         return res.render("successemail.ejs");
     } catch (error) {
-        console.error("Error updating user verification status:", error);
-        return res.status(500).json({ error: "Internal Server Error" });
+        console.error("Token verification error:", error);
+        return res.status(400).json({ error: "Invalid or expired token" });
     }
 });
 
