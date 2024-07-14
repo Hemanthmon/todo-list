@@ -98,7 +98,7 @@ app.post('/register-user', async (req, res) => {
         sendVerificationMail(email, token)
 
 
-        return res.redirect('/login');
+        return res.redirect("successfullregestration.ejs");
     } catch (error) {
         console.log("Error in register-user:", error);
         return res.status(500).json({
@@ -162,7 +162,7 @@ app.post('/login-user', async (req, res) => {
        
         //check for verified email
         if(!userDb.isEmailVerified)
-            return res.status(400).json("Verify your email ID, before login")
+            return res.status(400).json("Verify your email address, before login")
 
         // Compare the password
         const isMatched = await bcrypt.compare(password, userDb.password);
@@ -174,7 +174,7 @@ app.post('/login-user', async (req, res) => {
             username: userDb.username,
             email: userDb.email,
         };
-        return res.redirect("/dashboard");
+        return res.redirect("/dashboard.ejs");
     } catch (error) {
         console.log("Error in login-user:", error);
         return res.status(500).json({
