@@ -132,7 +132,7 @@ const sendVerificationMail = (email, token) => {
         <div class="content">
             <p>Hi there!</p>
             <p>Thank you for registering with our To-Do application. Please verify your email address by clicking the button below.</p>
-            <a href="http://localhost:8000/verifytoken/${token}" class="button">Verify Email</a>
+            <a href="${verificationUrl}" class="button">Verify Email</a>
         </div>
         <div class="footer">
             <div class="social-media">
