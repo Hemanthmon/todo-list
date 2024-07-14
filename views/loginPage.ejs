@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="styles.css">
-    <style>/* Basic reset */
+    <style>
+        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
@@ -72,7 +73,22 @@
             background: #6a11cb;
         }
         
-        </style>
+        .register-link {
+            margin-top: 10px;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        .register-link a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -85,6 +101,10 @@
             
             <button type="submit">Login</button>
         </form>
+        
+        <div class="register-link">
+            <span>Didn't register? </span><a href="/register" target="_blank">Register here</a>
+        </div>
     </div>
 </body>
 </html>
