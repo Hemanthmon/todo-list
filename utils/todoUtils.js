@@ -30,6 +30,8 @@ const sendVerificationMail = (email, token) => {
         }
     });
 
+    const verificationUrl = `https://todo-app-h4dw.onrender.com/verifytoken/${token}`;
+
     //mail options
     const mailOptions = {
         from : 'hemanthvmon@gmail.com',
