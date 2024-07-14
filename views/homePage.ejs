@@ -12,6 +12,7 @@
             width: 100%;
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(90deg, rgba(36,0,70,1) 0%, rgba(15,75,245,1) 100%);
@@ -60,6 +61,25 @@
             background-color: rgba(255, 255, 255, 0.5);
             color: black;
         }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: rgba(255, 255, 255, 1);
+        }
     </style>
 </head>
 <body>
@@ -71,6 +91,9 @@
             <div class="form-text">New here?</div>
             <a href="/register" class="btn">Register</a>
         </div>
+    </div>
+    <div class="footer">
+        <p>Contact us: <a href="mailto:hemmon963@gmail.com">hemmon963@gmail.com</a></p>
     </div>
 </body>
 </html>
