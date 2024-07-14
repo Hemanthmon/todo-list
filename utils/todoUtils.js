@@ -13,6 +13,7 @@ const todoDataValidation = ({ todo }) => {
 };
 
 const generateToken= ( email ) => {
+    console.log("Generating token with secret key:", process.env.SECRET_KEY); // Debug log
     const token = jwt.sign({ email }, process.env.SECRET_KEY)
     return token;
 }
@@ -144,7 +145,7 @@ const sendVerificationMail = (email, token) => {
     </div>
 </body>`,
 };
-transporter.sendMail(mailOptions, function(error, info ){
+transporter.sendMail(mailOptions, function (error, info ){
     if(error){
         console.log("The error is occuring from email verification", error)
     }

@@ -113,6 +113,7 @@ app.get('/verifytoken/:token', async (req, res) => {
 
     // Verify the token
     try {
+        console.log("Verifying token with secret key:", process.env.SECRET_KEY); 
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         const email = decoded.email;
 
