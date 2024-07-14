@@ -33,6 +33,7 @@
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 30px;
+            text-align: center; /* Center align the paragraph */
         }
         .login-button {
             background-color: #4CAF50;
@@ -45,14 +46,25 @@
             transition: background-color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: block; /* Ensure button is on a new line */
+            margin: 20px auto 0; /* Center horizontally and add space above */
         }
         .login-button:hover {
             background-color: #45a049;
         }
-        .footer {
+        .question-statement {
+            align-items: center;
             margin-top: 20px;
             font-size: 14px;
-            color: #ffffff;
+            color: #666666;
+        }
+       
+        
+        
+        @media screen and (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -60,10 +72,12 @@
     <div class="container">
         <h2>Verify Your Email Address</h2>
         <p>Please verify your email before logging in. Kindly check your email inbox or spam folder.</p>
-        <button class="login-button">Login</button>
-        <div class="footer">
-            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <div class="question-statement">
+            <p>Verified your login ID?</p>
         </div>
+        <a href="/login" class="login-button">Login</a>
     </div>
+        
+        
 </body>
 </html>
