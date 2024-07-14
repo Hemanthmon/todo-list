@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 const { userDataValidation, isEmailRegex } = require('./utils/authUtil');
 const userModel = require("./models/userModel");
 const isAuth = require('./middleware/authMiddleware');
-const {todoDataValidation, genrateToken, sendVerificationMail} = require("./utils/todoUtils");
+const {todoDataValidation, generateToken, sendVerificationMail} = require("./utils/todoUtils");
 const todoModel = require('./models/todoModel');
 const ratelimiting = require('./middleware/rateLimiting');
 
@@ -90,11 +90,11 @@ app.post('/register-user', async (req, res) => {
        const userDb = await userObj.save();
 
         //genrate the token
-        const token = genrateToken(email)
+        const token = generateToken(email)
         console.log(token);
         console.log("email", jwt.verify(token, process.env.SECRET_KEY));
 
-        //send mail
+        //send verification mail
         sendVerificationMail(email, token)
 
 
@@ -103,25 +103,33 @@ app.post('/register-user', async (req, res) => {
         console.log("Error in register-user:", error);
         return res.status(500).json({
             message: "Internal Server Error",
-            error: error,
+            error: error.message,
         });
     }
 });
 
-app.get('/verifytoken/:token', async (req, res)=>{
-    console.log(req.params.token);
+app.get('/verifytoken/:token', async (req, res) => {
     const token = req.params.token;
-    const email = jwt.verify(token, process.env.SECRET_KEY);
-    console.log(email);
-    try{
-        await userModel.findOneAndUpdate ({email : email}, {isEmailVerified : true});
-         return res.render("successemail.ejs");
-    }catch(error){
-        return res.status(500).json(error)
+
+    // Verify the token
+    let email;
+    try {
+        email = jwt.verify(token, process.env.SECRET_KEY).email; // Use .email to extract the email from the payload
+    } catch (error) {
+        console.error("Token verification error:", error);
+        return res.status(400).json({ error: "Invalid or expired token" });
     }
 
+    try {
+        // Update the user to set email as verified
+        await userModel.findOneAndUpdate({ email }, { isEmailVerified: true });
+        return res.render("successemail.ejs");
+    } catch (error) {
+        console.error("Error updating user verification status:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
-})
 // Login side
 app.get('/login', (req, res) => {
     return res.render("loginPage.ejs");

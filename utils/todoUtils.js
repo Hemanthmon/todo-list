@@ -12,8 +12,8 @@ const todoDataValidation = ({ todo }) => {
     });
 };
 
-const genrateToken= ( email ) => {
-    const token = jwt.sign(email, process.env.SECRET_KEY)
+const generateToken= ( email ) => {
+    const token = jwt.sign({ email }, process.env.SECRET_KEY)
     return token;
 }
 
@@ -152,4 +152,4 @@ transporter.sendMail(mailOptions, function(error, info ){
 }); 
 
 };
-module.exports = { todoDataValidation, genrateToken, sendVerificationMail };
+module.exports = { todoDataValidation, generateToken, sendVerificationMail };
