@@ -174,7 +174,7 @@ app.post('/login-user', async (req, res) => {
             username: userDb.username,
             email: userDb.email,
         };
-        return res.render("dashboard.ejs");
+        return res.render("dashboardpage.ejs");
     } catch (error) {
         console.log("Error in login-user:", error);
         return res.status(500).json({
