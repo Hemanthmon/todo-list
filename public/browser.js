@@ -2,11 +2,6 @@ let skip = 0;
 
 window.onload = generateTodos;
 
-function toggle(){
-    document.getElementById('darkmode')
-    onclick.toggle('click', darkmode);
-
-}
 
 function generateTodos() {
     axios
