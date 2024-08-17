@@ -60,7 +60,7 @@ const sendVerificationMail = (email, token) => {
         }
         .header {
             padding: 20px;
-            background-image: url('./photos/gmail\ pic.jpg'); /* Replace with your background image URL */
+            background-image: url('https://img.goodfon.com/wallpaper/nbig/4/77/firewatch-pozharnyi-dozor-campo-santo-igra-les-vid-peizazh-k.webp');
             background-size: cover;
             background-position: center;
             color: white;
